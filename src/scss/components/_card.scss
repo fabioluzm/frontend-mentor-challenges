@@ -1,12 +1,67 @@
 .card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "title"
+    "text"
+    "image";
+  gap: 0.3125rem;  
   width: 19.375rem;
+  padding: 1.875rem;
+  margin-bottom: 1.875rem;
+  border-radius: 0.25rem;
+  border-top: 0.3125rem solid;
+  background-color: $white;
+  box-shadow: 0px 0.625rem 0.9375rem 0.1875rem rgba($grayishBlue, 0.3);
+  @include breakpoint-up(xlarge) {
+    width: 21.875rem;
+  }
   &__heading {
-    
+    grid-area: title;
+    margin: 0;
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: $veryDarkBlue
   }
   &__text {
-
+    grid-area: text;
+    margin-top: 0;
+    margin-bottom: 1.875rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: $grayishBlue
   }
   &__image {
-    
+    grid-area: image;
+    justify-self: end;
+    max-width: 64px;
+  }
+  &--cyan {
+    border-color: $cyan;
+    order: 1;
+  }
+  &--red {
+    border-color: $red;
+    order: 2;
+  }
+  &--orange {
+    border-color: $orange;
+    order: 3;
+    @include breakpoint-up(large){
+      order: 4;
+    }
+  }
+  &--blue {
+    border-color: $blue;
+    order: 4;
+    @include breakpoint-up(large){
+      order: 3;
+    }
+  }
+  &--shift-down {
+    @include breakpoint-up(large) {
+      transform: translateY(50%);
+    }
   }
 }
